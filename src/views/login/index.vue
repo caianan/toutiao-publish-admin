@@ -1,5 +1,39 @@
 <template>
-    <div class="login-container">登陆页面</div>
+    <div class="login-container">
+      <!--
+        el-form 表单组件
+        每个表单项都必须使用 el-form-item 组件包裹
+       -->
+      <div class="login-head">
+        <img src="./logo_index.png" alt="">
+      </div>
+      <el-form class="login-form" ref="form" :model="user" >
+        <el-form-item>
+          <el-input
+            v-model="user.mobile"
+            placeholder="请输入手机号码"
+          ></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input
+            v-model="user.code"
+            placeholder="请输入验证码"
+          ></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-checkbox v-model="checked">
+            我已阅读并统一用户协议和隐私条款
+          </el-checkbox>
+        </el-form-item>
+        <el-form-item>
+          <el-button
+            class="login-btn"
+            type="primary"
+            @click="onLogin"
+          >登陆</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
 </template>
 <script>
 export default {
@@ -7,14 +41,61 @@ export default {
   components: {},
   props: {},
   data () {
-    return {}
+    return {
+      user: {
+        mobile: '', // 手机号
+        code: '' // 验证码
+      },
+      cheched: false // 默认是false，是否统一协议的选中状态
+    }
   },
   computed: {},
   watch: {},
   created () {},
   mounted () {},
-  methods () {}
+  methods: {
+    onLogin () {
+      /* 获取表单数据 */
+
+      /* 表单验证 */
+
+      /* 验证通过，提交 */
+    }
+  }
 }
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="less" scoped>
+.login-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("./login_bg.jpg") no-repeat;
+  background-size: cover;
+  /* background-size 背景填充模式 常见的两个值cover和contain */
+  /* cover是让背景的短边显示出来，contain是让背景的长边显示出来 */
+  .login-head {
+    height: 70px;
+    min-width: 400px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-form {
+    background-color: #ffffff;
+    padding: 30px 50px;
+    min-width: 300px;
+    .login-btn {
+      /* 按钮撑满父元素，使用width:100% */
+      width: 100%;
+    }
+  }
+}
+</style>
