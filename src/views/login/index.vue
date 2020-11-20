@@ -145,6 +145,11 @@ export default {
         })
         // 关闭loading
         this.loginLoading = false
+        // 跳转到首页
+        // this.$router.push('/')
+        this.$router.push({
+          name: 'home'
+        })
       }).catch(err => {
         console.log('登陆失败', err)
         // 登陆失败，catch用来捕获异常
